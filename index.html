@@ -28,85 +28,382 @@
 html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
+/* ========== SCROLL PROGRESS ========== */
 #scrollProgress{position:fixed;top:0;left:0;height:3px;background:var(--acid);z-index:10000;width:0%;will-change:width}
 
+/* ========== BORDER DASHES ========== */
 .border-anim{position:fixed;z-index:3;pointer-events:none}
-.border-top,.border-bottom{left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:200% 2px;animation:dashMove 6s linear infinite;opacity:.2}
-.border-left,.border-right{top:0;bottom:0;width:2px;background:repeating-linear-gradient(0deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:2px 200%;animation:dashMoveV 6s linear infinite;opacity:.2}
+.border-top,.border-bottom{left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:200% 2px;animation:dashMove 5s linear infinite;opacity:.35}
+.border-left,.border-right{top:0;bottom:0;width:2px;background:repeating-linear-gradient(0deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:2px 200%;animation:dashMoveV 5s linear infinite;opacity:.35}
 .border-top{top:8px}.border-bottom{bottom:8px}.border-left{left:8px}.border-right{right:8px}
-@keyframes dashMove{0%{background-position:0 0}100%{background-position:200% 0}}
-@keyframes dashMoveV{0%{background-position:0 0}100%{background-position:0 200%}}
+@keyframes dashMove{to{background-position:200% 0}}
+@keyframes dashMoveV{to{background-position:0 200%}}
 
-.sr{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+/* ========== SCROLL REVEAL ========== */
+.sr{opacity:0;transform:translateY(40px);transition:opacity .75s ease,transform .75s ease}
 .sr.visible{opacity:1;transform:translateY(0)}
 
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px 20px 80px;overflow:hidden;text-align:center}
-
-.aurora-glow{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
-.aurora-1{width:280px;height:280px;background:radial-gradient(circle,rgba(255,42,84,.16),transparent 70%);top:-50px;left:-50px;animation:auroraDrift 10s ease-in-out infinite alternate}
-.aurora-2{width:260px;height:260px;background:radial-gradient(circle,rgba(204,255,0,.12),transparent 70%);bottom:-40px;right:-40px;animation:auroraDrift 12s ease-in-out infinite alternate-reverse}
-@keyframes auroraDrift{0%{transform:translate(0,0)}100%{transform:translate(25px,-18px)}}
-
-.chapter{font-family:var(--font-mono);font-size:10px;letter-spacing:.35em;color:var(--pink);text-transform:uppercase;position:relative;z-index:10;margin-bottom:20px;opacity:0;animation:fadeUp .5s ease .2s forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-.hero-text{position:relative;z-index:10;width:100%}
-
-.hero-line{display:block;line-height:.92;overflow:hidden;letter-spacing:-.03em;margin-bottom:2px}
-
-.letter{display:inline-block;font-family:var(--font-display);font-size:clamp(48px,14vw,120px);font-weight:800;text-transform:uppercase;color:var(--paper);opacity:0;transform:translateY(80%);animation:letterReveal .6s cubic-bezier(.16,1,.3,1) forwards;will-change:transform,opacity}
-@keyframes letterReveal{to{opacity:1;transform:translateY(0)}}
-
-@media (prefers-reduced-motion:no-preference){
-  .letter{animation:letterReveal .6s cubic-bezier(.16,1,.3,1) forwards,letterFloat 5s ease-in-out infinite}
-  @keyframes letterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:100px 20px 80px;
+  overflow:hidden;
+  text-align:center;
+  /* subtle dot grid background */
+  background-image:radial-gradient(circle,rgba(204,255,0,.08) 1px,transparent 1px);
+  background-size:28px 28px;
 }
 
-.day-line .letter{-webkit-text-stroke:2px var(--acid);color:transparent;-webkit-text-fill-color:transparent}
+/* ---- FLOATING COLOR BLOBS (GPU: only transform+opacity) ---- */
+.blob{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  will-change:transform;
+  z-index:1;
+}
+.blob-1{
+  width:260px;height:260px;
+  background:radial-gradient(circle at 40% 40%,rgba(255,42,84,.55),rgba(255,42,84,.0) 70%);
+  top:-80px;left:-60px;
+  animation:blobFloat1 7s ease-in-out infinite alternate;
+}
+.blob-2{
+  width:220px;height:220px;
+  background:radial-gradient(circle at 60% 40%,rgba(204,255,0,.45),rgba(204,255,0,.0) 70%);
+  bottom:-60px;right:-50px;
+  animation:blobFloat2 9s ease-in-out infinite alternate;
+}
+.blob-3{
+  width:160px;height:160px;
+  background:radial-gradient(circle at 50% 50%,rgba(0,240,255,.4),rgba(0,240,255,.0) 70%);
+  top:30%;right:-30px;
+  animation:blobFloat1 11s ease-in-out 1s infinite alternate;
+}
+@keyframes blobFloat1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,-25px) scale(1.1)}}
+@keyframes blobFloat2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-25px,20px) scale(1.08)}}
 
-.hand-note{font-family:var(--font-hand);font-size:clamp(14px,4vw,20px);color:var(--cyan);position:relative;z-index:10;transform:rotate(-2deg);margin-top:18px;opacity:0;animation:fadeUp .6s ease 1.4s forwards;padding:0 8px}
+/* ---- FLOATING GEO SHAPES ---- */
+.geo{position:absolute;pointer-events:none;z-index:2;will-change:transform}
+.geo-circle{border-radius:50%;border:2px solid;animation:geoSpin 18s linear infinite}
+.geo-square{animation:geoSpin 22s linear reverse infinite}
+.geo-tri{width:0;height:0;background:none;animation:geoFloat 6s ease-in-out infinite alternate}
+.geo-ring{border-radius:50%;border:1.5px dashed;animation:geoSpin 30s linear infinite}
 
-.est{margin-top:16px;font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;border:2px solid var(--acid);padding:6px 12px;color:var(--acid);z-index:10;position:relative;background:var(--ink);box-shadow:var(--shadow-brutal-sm);opacity:0;animation:fadeUp .6s ease 1s forwards;display:inline-block}
+@keyframes geoSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes geoFloat{0%{transform:translateY(0)}100%{transform:translateY(-18px)}}
 
-.scroll-instruction{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none;z-index:900;animation:hintBounce 2s ease-in-out infinite;transition:opacity .3s,transform .3s}
+/* ---- STARBURST SYMBOLS ---- */
+.star{
+  position:absolute;
+  pointer-events:none;
+  z-index:2;
+  font-family:var(--font-mono);
+  font-size:22px;
+  will-change:transform,opacity;
+  animation:starPulse 4s ease-in-out infinite alternate;
+}
+@keyframes starPulse{
+  0%{transform:scale(.7) rotate(0deg);opacity:.2}
+  100%{transform:scale(1.2) rotate(40deg);opacity:.6}
+}
+
+/* ---- SPINNING RINGS ---- */
+.ring{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:1;
+  will-change:transform;
+}
+.ring-1{
+  width:420px;height:420px;
+  border:1.5px dashed rgba(204,255,0,.18);
+  top:50%;left:50%;
+  animation:spinRing 40s linear infinite;
+}
+.ring-2{
+  width:620px;height:620px;
+  border:1px dashed rgba(255,42,84,.12);
+  top:50%;left:50%;
+  animation:spinRing 55s linear reverse infinite;
+}
+@keyframes spinRing{
+  0%{transform:translate(-50%,-50%) rotate(0deg)}
+  100%{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+/* ---- CHAPTER TAG ---- */
+.chapter{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.38em;
+  color:var(--pink);
+  text-transform:uppercase;
+  position:relative;
+  z-index:10;
+  margin-bottom:22px;
+  opacity:0;
+  animation:fadeUp .5s ease .2s forwards;
+}
+.chapter::before{content:'🎓 '}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---- HERO LETTERS ---- */
+.hero-text{position:relative;z-index:10;width:100%}
+.hero-line{display:block;line-height:.92;overflow:hidden;letter-spacing:-.03em;margin-bottom:2px}
+
+.letter{
+  display:inline-block;
+  font-family:var(--font-display);
+  font-size:clamp(50px,14vw,120px);
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--paper);
+  opacity:0;
+  transform:translateY(100%);
+  animation:letterReveal .65s cubic-bezier(.16,1,.3,1) forwards, letterFloat 5s ease-in-out infinite;
+  will-change:transform,opacity;
+}
+@keyframes letterReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes letterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.day-line .letter{
+  -webkit-text-stroke:2.5px var(--acid);
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+}
+
+/* occasional glitch on DAY letters */
+.day-line .letter:nth-child(odd){animation:letterReveal .65s cubic-bezier(.16,1,.3,1) forwards, letterFloat 5s ease-in-out infinite, glitch 7s ease-in-out 3s infinite}
+@keyframes glitch{
+  0%,88%,100%{text-shadow:none}
+  90%{text-shadow:3px 0 var(--pink),-3px 0 var(--cyan)}
+  93%{text-shadow:-2px 0 var(--pink),2px 0 var(--cyan)}
+  96%{text-shadow:2px 0 var(--acid)}
+}
+
+/* ---- HAND NOTE ---- */
+.hand-note{
+  font-family:var(--font-hand);
+  font-size:clamp(15px,4vw,22px);
+  color:var(--cyan);
+  position:relative;
+  z-index:10;
+  transform:rotate(-2deg);
+  margin-top:20px;
+  opacity:0;
+  animation:fadeUp .6s ease 1.4s forwards;
+  padding:0 10px;
+  text-shadow:0 0 20px rgba(0,240,255,.4);
+}
+
+/* ---- EST BADGE ---- */
+.est{
+  margin-top:18px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.15em;
+  border:2px solid var(--acid);
+  padding:7px 14px;
+  color:var(--acid);
+  z-index:10;
+  position:relative;
+  background:var(--ink);
+  box-shadow:var(--shadow-brutal-sm);
+  opacity:0;
+  animation:fadeUp .6s ease 1s forwards;
+  display:inline-block;
+  transition:transform .2s,box-shadow .2s;
+}
+
+/* ---- SCROLL HINT ---- */
+.scroll-instruction{
+  position:fixed;bottom:18px;left:50%;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  pointer-events:none;z-index:900;
+  animation:hintBounce 2s ease-in-out infinite;
+  transition:opacity .3s,transform .3s;
+}
 .scroll-instruction.hidden{opacity:0;transform:translateX(-50%) translateY(18px)}
 .scroll-instruction span{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.28em;color:var(--acid);text-transform:uppercase}
 .arrow-down-icon{width:10px;height:10px;border-right:2px solid var(--acid);border-bottom:2px solid var(--acid);transform:rotate(45deg);margin-top:2px}
 @keyframes hintBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
 
-.ticker-wrap{overflow:hidden;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:10px 0;z-index:5;position:relative;background:var(--charcoal)}
-.ticker{display:flex;width:max-content;animation:tickerScroll 30s linear infinite;will-change:transform}
-.ticker span{font-family:var(--font-display);font-size:clamp(26px,5.5vw,56px);font-weight:800;text-transform:uppercase;white-space:nowrap;padding:0 14px;letter-spacing:-.02em}
+/* =========================================
+   TICKER
+   ========================================= */
+.ticker-wrap{
+  overflow:hidden;
+  border-top:3px solid var(--ink);
+  border-bottom:3px solid var(--ink);
+  padding:10px 0;
+  z-index:5;
+  position:relative;
+  background:var(--charcoal);
+}
+.ticker{
+  display:flex;
+  width:max-content;
+  animation:tickerScroll 26s linear infinite;
+  will-change:transform;
+}
+.ticker span{
+  font-family:var(--font-display);
+  font-size:clamp(28px,6vw,60px);
+  font-weight:800;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding:0 16px;
+  letter-spacing:-.02em;
+}
 .ticker span:nth-child(odd){-webkit-text-stroke:2px var(--acid);color:transparent}
 .ticker span:nth-child(even){-webkit-text-stroke:2px var(--pink);color:transparent}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.section-mps{min-height:100svh;padding:70px 20px;position:relative;z-index:10;display:flex;align-items:center;justify-content:center;background:var(--paper);color:var(--ink);border-top:3px solid var(--ink)}
-.mps-container{max-width:560px;width:100%;text-align:center}
-.mps-badge{display:inline-block;font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--acid);background:var(--ink);padding:6px 16px;border:2px solid var(--ink);box-shadow:var(--shadow-brutal-sm);text-transform:uppercase;margin-bottom:18px}
-.mps-title{font-family:var(--font-display);font-size:clamp(28px,7vw,56px);font-weight:800;line-height:.95;text-transform:uppercase;margin-bottom:24px;letter-spacing:-.03em;color:var(--ink)}
+/* =========================================
+   MPS SECTION
+   ========================================= */
+.section-mps{
+  min-height:100svh;
+  padding:70px 20px;
+  position:relative;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--paper);
+  color:var(--ink);
+  border-top:3px solid var(--ink);
+  overflow:hidden;
+}
+/* diagonal stripes background accent */
+.section-mps::before{
+  content:'';
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(-45deg,rgba(204,255,0,.04) 0,rgba(204,255,0,.04) 1px,transparent 1px,transparent 20px);
+  pointer-events:none;
+  z-index:0;
+}
+.mps-container{max-width:580px;width:100%;text-align:center;position:relative;z-index:1}
+.mps-badge{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:9px;font-weight:700;
+  letter-spacing:.2em;color:var(--acid);
+  background:var(--ink);
+  padding:6px 16px;
+  border:2px solid var(--ink);
+  box-shadow:var(--shadow-brutal-sm);
+  text-transform:uppercase;margin-bottom:18px;
+}
+.mps-title{
+  font-family:var(--font-display);
+  font-size:clamp(28px,7vw,56px);
+  font-weight:800;line-height:.95;
+  text-transform:uppercase;
+  margin-bottom:24px;
+  letter-spacing:-.03em;
+  color:var(--ink);
+}
 .mps-title em{font-style:normal;color:var(--pink)}
-.mps-card{background:#FFF;border:3px solid var(--ink);padding:32px 20px;box-shadow:var(--shadow-brutal);position:relative;margin-top:14px;text-align:left}
-.mps-card::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:90px;height:18px;background:rgba(204,255,0,.9);border:1px solid rgba(0,0,0,.2);z-index:20}
-.mps-quote{font-family:var(--font-hand);font-size:clamp(18px,4.5vw,28px);line-height:1.4;color:var(--ink);margin-bottom:20px}
-.mps-footer-note{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--pink);text-transform:uppercase;border-top:2px dashed var(--ink);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.mps-card{
+  background:#FFF;
+  border:3px solid var(--ink);
+  padding:32px 20px;
+  box-shadow:var(--shadow-brutal);
+  position:relative;margin-top:14px;text-align:left;
+}
+.mps-card::before{
+  content:'';
+  position:absolute;top:-10px;left:50%;
+  transform:translateX(-50%);
+  width:90px;height:18px;
+  background:rgba(204,255,0,.9);
+  border:1px solid rgba(0,0,0,.2);z-index:20;
+}
+.mps-quote{
+  font-family:var(--font-hand);
+  font-size:clamp(18px,4.5vw,28px);
+  line-height:1.4;color:var(--ink);margin-bottom:20px;
+}
+.mps-footer-note{
+  font-family:var(--font-mono);
+  font-size:10px;font-weight:700;
+  letter-spacing:.12em;color:var(--pink);
+  text-transform:uppercase;
+  border-top:2px dashed var(--ink);
+  padding-top:14px;
+  display:flex;flex-direction:column;gap:6px;
+}
 
-.next-wrap{padding:56px 20px;text-align:center;position:relative;z-index:10;background:var(--ink)}
-.next-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--acid);border:3px solid var(--ink);color:var(--ink);padding:16px 36px;font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;position:relative;box-shadow:var(--shadow-brutal);transition:transform .15s,box-shadow .15s;text-decoration:none;-webkit-user-select:none;user-select:none;max-width:300px;width:90%}
+/* =========================================
+   NEXT PAGE BUTTON
+   ========================================= */
+.next-wrap{
+  padding:60px 20px;text-align:center;
+  position:relative;z-index:10;
+  background:var(--ink);
+  /* subtle cross pattern */
+  background-image:radial-gradient(circle,rgba(204,255,0,.06) 1px,transparent 1px);
+  background-size:24px 24px;
+  background-color:var(--ink);
+}
+.next-btn{
+  display:inline-flex;
+  align-items:center;justify-content:center;gap:10px;
+  background:var(--acid);
+  border:3px solid var(--ink);
+  color:var(--ink);
+  padding:16px 36px;
+  font-family:var(--font-mono);
+  font-size:13px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  cursor:pointer;position:relative;
+  box-shadow:var(--shadow-brutal);
+  transition:transform .15s,box-shadow .15s;
+  text-decoration:none;
+  -webkit-user-select:none;user-select:none;
+  max-width:300px;width:90%;
+}
 .next-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
 .btn-arrow{display:inline-block;font-size:16px}
 
-.site-footer{padding:36px 20px;text-align:center;background:var(--ink);color:var(--paper);border-top:3px solid var(--acid);position:relative;z-index:10}
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer{
+  padding:36px 20px;text-align:center;
+  background:var(--ink);color:var(--paper);
+  border-top:3px solid var(--acid);
+  position:relative;z-index:10;
+}
 .footer-text{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#888}
 .footer-heart{color:var(--pink);display:inline-block;animation:heartBeat 1.5s ease-in-out infinite}
 @keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}}
 
-.by-piyush-watermark{position:fixed;bottom:16px;left:16px;font-family:var(--font-hand);font-size:16px;color:var(--acid);opacity:.65;z-index:9998;pointer-events:none;user-select:none;text-shadow:0 0 10px rgba(204,255,0,.4)}
+.by-piyush-watermark{
+  position:fixed;bottom:16px;left:16px;
+  font-family:var(--font-hand);font-size:16px;
+  color:var(--acid);opacity:.65;
+  z-index:9998;pointer-events:none;user-select:none;
+  text-shadow:0 0 10px rgba(204,255,0,.4);
+}
 
+/* Desktop-only hover effects */
 @media(hover:hover){
-  .letter{cursor:default}
-  .letter:hover{color:var(--acid);-webkit-text-fill-color:var(--acid);transform:translateY(-10px) scale(1.12) !important;transition:transform .18s ease}
+  .letter{cursor:default;transition:transform .2s ease,color .15s}
+  .letter:hover{color:var(--acid);-webkit-text-fill-color:var(--acid);transform:translateY(-12px) scale(1.14)!important}
   .next-btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--pink);background:var(--cyan)}
+  .est:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--acid);background:var(--acid);color:var(--ink)}
 }
 </style>
 </head>
@@ -120,11 +417,33 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 <div class="border-anim border-left"></div>
 <div class="border-anim border-right"></div>
 
+<!-- ===== HERO ===== -->
 <section class="hero" id="hero-section">
-  <div class="aurora-glow aurora-1"></div>
-  <div class="aurora-glow aurora-2"></div>
 
-  <p class="chapter">🎓 CHAPTER 01 — AN INK-SOAKED TRIBUTE</p>
+  <!-- Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Spinning rings -->
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+
+  <!-- Floating geometric shapes -->
+  <div class="geo geo-circle" style="width:60px;height:60px;border-color:rgba(204,255,0,.3);top:15%;left:8%;animation-duration:20s"></div>
+  <div class="geo geo-circle" style="width:30px;height:30px;border-color:rgba(255,42,84,.4);top:70%;right:10%;animation-duration:14s;animation-direction:reverse"></div>
+  <div class="geo geo-square" style="width:40px;height:40px;border:2px solid rgba(0,240,255,.3);top:20%;right:8%"></div>
+  <div class="geo geo-ring" style="width:80px;height:80px;border-color:rgba(255,42,84,.25);bottom:20%;left:6%;animation-duration:35s"></div>
+  <div class="geo geo-ring" style="width:50px;height:50px;border-color:rgba(204,255,0,.2);top:55%;right:6%;animation-duration:25s"></div>
+
+  <!-- Starburst symbols -->
+  <div class="star" style="top:12%;left:5%;color:var(--acid);animation-delay:0s">✦</div>
+  <div class="star" style="top:22%;right:7%;color:var(--pink);animation-delay:.8s;font-size:16px">✴</div>
+  <div class="star" style="bottom:22%;left:7%;color:var(--cyan);animation-delay:1.6s;font-size:18px">★</div>
+  <div class="star" style="bottom:28%;right:6%;color:var(--acid);animation-delay:2.4s;font-size:14px">✦</div>
+  <div class="star" style="top:40%;left:4%;color:var(--pink);animation-delay:1.2s;font-size:12px">◆</div>
+
+  <p class="chapter">CHAPTER 01 — AN INK-SOAKED TRIBUTE</p>
 
   <div class="hero-text">
     <div class="hero-line" id="line1"></div>
@@ -141,6 +460,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
     <span>HAPPY TEACHER'S DAY —</span><span>THANK YOU GURU —</span><span>CHALK &amp; INK —</span><span>NEVER FORGOTTEN —</span>
@@ -148,6 +468,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   </div>
 </div>
 
+<!-- MPS SECTION -->
 <section class="section-mps" id="creator-section">
   <div class="mps-container">
     <div class="mps-badge">MAHESHWARI PUBLIC SCHOOL</div>
@@ -162,6 +483,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   </div>
 </section>
 
+<!-- NEXT PAGE BUTTON -->
 <div class="next-wrap sr">
   <a class="next-btn" href="page2.html">
     <span>NEXT PAGE</span>
@@ -169,8 +491,9 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   </a>
 </div>
 
+<!-- FOOTER -->
 <footer class="site-footer">
-  <p class="footer-text">CRAFTED WITH <span class="footer-heart">♥</span> FOR EVERY TEACHER — INKPUNK × 2024</p>
+  <p class="footer-text">CRAFTED WITH <span class="footer-heart">♥</span> FOR EVERY TEACHER — INKPUNK x 2024</p>
 </footer>
 
 <script>
@@ -181,7 +504,7 @@ function buildLetters(id, text, delay) {
     const s = document.createElement('span');
     s.className = 'letter';
     s.textContent = ch === ' ' ? '\u00A0' : ch;
-    s.style.animationDelay = `${delay + i * .055}s, ${1.5 + i * .2}s`;
+    s.style.animationDelay = `${delay + i * .055}s, ${1.5 + i * .2}s, 0s`;
     el.appendChild(s);
   });
 }
@@ -192,7 +515,7 @@ window.addEventListener('DOMContentLoaded', () => {
   buildLetters('line3', 'DAY', .75);
 
   const scrollBtn = document.getElementById('scroll-instruction');
-  const nextWrap = document.querySelector('.next-wrap');
+  const nextWrap  = document.querySelector('.next-wrap');
   let ticking = false;
 
   window.addEventListener('scroll', () => {
@@ -210,8 +533,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
   }, { threshold: .1 });
   document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 });
