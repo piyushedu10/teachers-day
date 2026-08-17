@@ -1,9 +1,0 @@
-{
-  "name": "teachers-day-inkpunk-zine",
-  "version": "1.0.0",
-  "description": "Inkpunk Brutalist Teacher's Day Tribute Zine Microsite for Maheshwari Public School",
-  "main": "index.html",
-  "scripts": {
-    "start": "npx serve ."
-  }
-}
