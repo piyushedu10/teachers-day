@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>INKPUNK × Teacher's Name Entry</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="Enter your teacher name - INKPUNK Teacher's Day Card">
+<title>INKPUNK x Teacher's Name Entry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Caveat+Brush&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,400..800;1,12..96,400..800&family=Caveat+Brush&family=IBM+Plex+Mono:wght@400;600;700&display=swap');
-
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 :root{
   --ink:#0A0A0A;
@@ -21,147 +23,240 @@
   --font-mono:'IBM Plex Mono',monospace;
   --shadow-brutal:6px 6px 0px var(--ink);
   --shadow-brutal-sm:4px 4px 0px var(--ink);
-  --shadow-brutal-light:6px 6px 0px var(--paper);
 }
 
 html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);cursor:crosshair;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-mono);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
 
-/* Noise Grain */
-.noise{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:9999;opacity:.55;mix-blend-mode:screen;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-  animation:grain .2s steps(4) infinite}
-@keyframes grain{0%{transform:translate(0)}25%{transform:translate(-2%,-1%)}50%{transform:translate(1%,2%)}75%{transform:translate(-1%,-2%)}100%{transform:translate(2%,1%)}}
+/* Ambient glow — no blur filter, just radial-gradient */
+.aurora-glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+.aurora-1{width:240px;height:240px;background:radial-gradient(circle,rgba(255,42,84,.14),transparent 70%);top:-40px;left:-40px;animation:auroraDrift 10s ease-in-out infinite alternate}
+.aurora-2{width:220px;height:220px;background:radial-gradient(circle,rgba(204,255,0,.1),transparent 70%);bottom:-30px;right:-30px;animation:auroraDrift 13s ease-in-out infinite alternate-reverse}
+@keyframes auroraDrift{0%{transform:translate(0,0)}100%{transform:translate(20px,-15px)}}
 
-/* Mouse Glow */
-#mouseGlow{position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:2;
-  background:radial-gradient(circle,rgba(204,255,0,.04) 0%,rgba(255,42,84,.02) 40%,transparent 65%);
-  transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out;will-change:left,top}
-
-/* Viewport Border Anim */
+/* Border animation */
 .border-anim{position:fixed;z-index:3;pointer-events:none}
-.border-top,.border-bottom{left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:200% 2px;animation:dashMove 4s linear infinite;opacity:.3}
-.border-left,.border-right{top:0;bottom:0;width:2px;background:repeating-linear-gradient(0deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:2px 200%;animation:dashMoveV 4s linear infinite;opacity:.3}
-.border-top{top:10px}.border-bottom{bottom:10px}.border-left{left:10px}.border-right{right:10px}
+.border-top,.border-bottom{left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:200% 2px;animation:dashMove 6s linear infinite;opacity:.2}
+.border-left,.border-right{top:0;bottom:0;width:2px;background:repeating-linear-gradient(0deg,var(--acid) 0,var(--acid) 10px,transparent 10px,transparent 20px);background-size:2px 200%;animation:dashMoveV 6s linear infinite;opacity:.2}
+.border-top{top:8px}.border-bottom{bottom:8px}.border-left{left:8px}.border-right{right:8px}
 @keyframes dashMove{0%{background-position:0 0}100%{background-position:200% 0}}
 @keyframes dashMoveV{0%{background-position:0 0}100%{background-position:0 200%}}
 
-/* Drips & Splatters */
-.ink-drip{position:fixed;width:2px;background:linear-gradient(to bottom,var(--pink),transparent);z-index:1;opacity:.25;animation:drip 3.5s ease-in infinite}
-@keyframes drip{0%{height:0;opacity:.35}60%{height:140px;opacity:.25}100%{height:140px;opacity:0}}
+/* Top Nav */
+.top-bar{
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:20;
+  flex-wrap:wrap;
+  gap:8px;
+  border-bottom:1px solid rgba(204,255,0,.12);
+}
+.btn-back{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:none;
+  border:2px solid var(--acid);
+  color:var(--acid);
+  padding:8px 16px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .2s,color .2s;
+  -webkit-user-select:none;
+  user-select:none;
+}
+.btn-back:active{background:var(--acid);color:var(--ink)}
+.page-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--pink);text-transform:uppercase}
 
-.ink-splash{position:fixed;pointer-events:none;z-index:9998;border-radius:50%;animation:splashOut .5s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes splashOut{0%{width:0;height:0;opacity:.8;transform:translate(-50%,-50%) scale(0)}60%{opacity:.5}100%{width:120px;height:120px;opacity:0;transform:translate(-50%,-50%) scale(1)}}
+/* Main container */
+.page-container{
+  max-width:520px;
+  width:100%;
+  margin:0 auto;
+  padding:32px 20px 60px;
+  position:relative;
+  z-index:10;
+  flex:1;
+}
 
-/* Motion Ambient Glow */
-.aurora-glow{position:absolute;border-radius:50%;filter:blur(70px);opacity:.2;pointer-events:none;z-index:0;animation:auroraDrift 8s ease-in-out infinite alternate}
-.aurora-1{width:380px;height:380px;background:var(--pink);top:10%;left:10%}
-.aurora-2{width:420px;height:420px;background:var(--acid);bottom:5%;right:10%;animation-delay:2.5s}
-@keyframes auroraDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(40px,-30px) scale(1.15)}}
-
-/* Back Button Bar */
-.top-bar{padding:24px 32px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:20}
-.btn-back{display:inline-flex;align-items:center;gap:8px;background:none;border:2px solid var(--acid);color:var(--acid);padding:8px 20px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s}
-.btn-back:hover{background:var(--acid);color:var(--ink);transform:translateX(-3px)}
-
-.page-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.25em;color:var(--pink);text-transform:uppercase}
-
-/* MAIN FORM CONTAINER */
-.page-container{max-width:900px;width:100%;margin:0 auto;padding:40px 24px 80px;position:relative;z-index:10}
-
-.entry-header{text-align:center;margin-bottom:48px}
-.entry-title{font-family:var(--font-display);font-size:clamp(36px,6.5vw,76px);font-weight:800;line-height:.95;text-transform:uppercase;letter-spacing:-.03em;color:var(--paper)}
+/* Header */
+.entry-header{text-align:center;margin-bottom:36px}
+.entry-title{
+  font-family:var(--font-display);
+  font-size:clamp(30px,8vw,60px);
+  font-weight:800;
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:-.03em;
+  color:var(--paper);
+  animation:fadeUp .5s ease .1s both;
+}
 .entry-title em{font-style:normal;color:var(--acid)}
-.entry-subtitle{margin-top:16px;font-size:13px;color:#A0A0A0;letter-spacing:.1em;text-transform:uppercase}
+.entry-subtitle{
+  margin-top:12px;
+  font-size:10px;
+  color:#909090;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  animation:fadeUp .5s ease .2s both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* BRUTALIST FORM CARD */
-.form-card{background:var(--paper);color:var(--ink);border:4px solid var(--ink);padding:44px 36px;box-shadow:var(--shadow-brutal-light);position:relative;transform:rotate(-1deg)}
-.form-card::before{content:'TEACHER IDENTIFICATION #059';position:absolute;top:-14px;left:24px;background:var(--acid);border:2px solid var(--ink);padding:2px 12px;font-size:9px;font-weight:700;letter-spacing:.2em}
+/* Form Card */
+.form-card{
+  background:var(--paper);
+  color:var(--ink);
+  border:3px solid var(--ink);
+  padding:32px 20px;
+  box-shadow:var(--shadow-brutal);
+  position:relative;
+  animation:fadeUp .5s ease .3s both;
+}
+.form-card::before{
+  content:'TEACHER IDENTIFICATION #059';
+  position:absolute;
+  top:-13px;left:20px;
+  background:var(--acid);
+  border:2px solid var(--ink);
+  padding:2px 10px;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--ink);
+  white-space:nowrap;
+}
 
-.form-group{margin-bottom:28px}
-.form-label{display:block;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
-.form-input{width:100%;background:var(--paper);border:3px solid var(--ink);padding:16px 18px;font-family:var(--font-mono);font-size:15px;font-weight:600;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+.form-group{margin-bottom:24px}
+.form-label{
+  display:block;
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  color:var(--ink);
+}
+.form-input{
+  width:100%;
+  background:var(--paper);
+  border:3px solid var(--ink);
+  padding:14px 16px;
+  font-family:var(--font-mono);
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  border-radius:0;
+  -webkit-appearance:none;
+  appearance:none;
+}
 .form-input:focus{border-color:var(--pink);box-shadow:4px 4px 0px var(--ink)}
 
-.vibe-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
-.vibe-btn{background:var(--paper);border:2.5px solid var(--ink);padding:12px 8px;font-family:var(--font-mono);font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:center}
-.vibe-btn.active,.vibe-btn:hover{background:var(--ink);color:var(--acid);box-shadow:3px 3px 0 var(--pink)}
+.btn-unlock{
+  width:100%;
+  margin-top:8px;
+  background:var(--acid);
+  color:var(--ink);
+  border:3px solid var(--ink);
+  padding:16px;
+  font-family:var(--font-mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:var(--shadow-brutal);
+  transition:transform .15s,box-shadow .15s;
+  -webkit-user-select:none;
+  user-select:none;
+  border-radius:0;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.btn-unlock:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
 
-.btn-unlock{width:100%;margin-top:16px;background:var(--acid);color:var(--ink);border:3.5px solid var(--ink);padding:18px;font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;box-shadow:var(--shadow-brutal);transition:transform .15s,box-shadow .15s,background .2s}
-.btn-unlock:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--pink);background:var(--cyan)}
-.btn-unlock:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
-
-/* RESULT CARD DISPLAY (Revealed on submission) */
-.card-result-container{margin-top:60px;display:none;flex-direction:column;align-items:center;animation:fadeInUp .7s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-
-.digital-card-wrapper{position:relative;max-width:540px;width:100%;transform:rotate(-2deg);transition:transform .3s ease}
-.digital-card-wrapper:hover{transform:rotate(0deg) scale(1.02)}
-
-.digital-card{background:var(--paper);color:var(--ink);border:4px solid var(--ink);padding:44px 36px 36px;box-shadow:10px 10px 0px var(--pink);position:relative;clip-path:polygon(0 0,100% 1%,99% 99%,1% 98%)}
-.digital-card::before{content:'';position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:140px;height:24px;background:rgba(204,255,0,.9);border:1px solid rgba(0,0,0,.2);z-index:20}
-
-.card-header-badge{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:#666;border-bottom:2px dashed var(--ink);padding-bottom:12px;margin-bottom:24px}
-.card-wish-text{font-family:var(--font-hand);font-size:clamp(26px,4.2vw,38px);line-height:1.25;color:var(--ink);margin-bottom:24px;min-height:100px}
-.card-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;font-weight:700;border-top:2px solid var(--ink);padding-top:16px;margin-top:16px}
-.card-meta span{border-b:2px solid var(--pink)}
-
-.card-controls{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;justify-content:center;z-index:20}
-.ctrl-btn{background:var(--ink);color:var(--paper);border:2px solid var(--acid);padding:12px 24px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;box-shadow:4px 4px 0 var(--acid);transition:all .2s}
-.ctrl-btn:hover{background:var(--acid);color:var(--ink);box-shadow:6px 6px 0 var(--pink);transform:translate(-2px,-2px)}
-.ctrl-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--acid)}
-
-/* SITE FOOTER */
-.site-footer{padding:40px 24px;text-align:center;background:var(--ink);color:var(--paper);border-top:3px solid var(--acid);position:relative;z-index:10}
-.footer-text{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#888}
+/* Footer */
+.site-footer{
+  padding:32px 20px;
+  text-align:center;
+  background:var(--ink);
+  color:var(--paper);
+  border-top:3px solid var(--acid);
+  position:relative;
+  z-index:10;
+}
+.footer-text{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#888}
 .footer-heart{color:var(--pink);display:inline-block;animation:heartBeat 1.5s ease-in-out infinite}
 @keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}}
-.by-piyush-watermark{position:fixed;bottom:16px;left:16px;background:var(--ink);color:var(--acid);border:2px solid var(--acid);padding:6px 12px;font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;z-index:9998;pointer-events:none;box-shadow:3px 3px 0 var(--pink);transform:rotate(-3deg);display:inline-flex;align-items:center;gap:4px}
+
+.by-piyush-watermark{position:fixed;bottom:16px;left:16px;font-family:var(--font-hand);font-size:16px;color:var(--acid);opacity:.65;z-index:9998;pointer-events:none;user-select:none;text-shadow:0 0 10px rgba(204,255,0,.4)}
+
+@media(hover:hover){
+  .btn-back:hover{background:var(--acid);color:var(--ink)}
+  .btn-unlock:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--pink);background:var(--cyan)}
+}
 </style>
 </head>
 <body>
-<div class="by-piyush-watermark">-By Piyush Mundhra</div>
 
-<div class="noise"></div>
-<div id="mouseGlow"></div>
+<div class="by-piyush-watermark">✦ By Piyush Mundhra</div>
 
+<div class="aurora-glow aurora-1"></div>
+<div class="aurora-glow aurora-2"></div>
 <div class="border-anim border-top"></div>
 <div class="border-anim border-bottom"></div>
 <div class="border-anim border-left"></div>
 <div class="border-anim border-right"></div>
 
-<div class="ink-drip" style="left:12%;top:0;animation-delay:0s"></div>
-<div class="ink-drip" style="left:75%;top:0;animation-delay:1.5s"></div>
-
-<div class="aurora-glow aurora-1"></div>
-<div class="aurora-glow aurora-2"></div>
-
-<!-- Top Navigation -->
 <div class="top-bar">
-  <a href="index.html" class="btn-back" data-testid="back-to-home">← HOME PAGE</a>
+  <a href="index.html" class="btn-back">← HOME</a>
   <span class="page-tag">CHAPTER 02 — NAME ENTRY</span>
 </div>
 
-<!-- Main Content Area -->
 <main class="page-container">
   <div class="entry-header">
-    <h1 class="entry-title" data-testid="entry-title">ENTER YOUR NAME, <em>TEACHER!</em></h1>
-    <p class="entry-subtitle" data-testid="entry-subtitle">UNCOVERS YOUR PERSONALIZED INKPUNK TEACHER'S DAY CARD</p>
+    <h1 class="entry-title">ENTER YOUR NAME, <em>TEACHER!</em></h1>
+    <p class="entry-subtitle">Uncovers your personalized inkpunk card</p>
   </div>
 
-  <div class="form-card" data-testid="name-entry-card">
+  <div class="form-card">
     <form id="teacherForm" onsubmit="handleTeacherSubmit(event)">
       <div class="form-group">
-        <label class="form-label" for="teacherNameInput">ENTER YOUR NAME</label>
-        <input type="text" id="teacherNameInput" class="form-input" placeholder="e.g. Prof. Sharma / Mrs. Kulkarni" required data-testid="teacher-name-field">
+        <label class="form-label" for="teacherNameInput">Your Name</label>
+        <input
+          type="text"
+          id="teacherNameInput"
+          class="form-input"
+          placeholder="e.g. Mrs. Sharma"
+          required
+          autocomplete="name"
+          enterkeyhint="go"
+        >
       </div>
-
-      <button type="submit" class="btn-unlock" id="btnUnlock" data-testid="unlock-card-btn">
+      <button type="submit" class="btn-unlock" id="btnUnlock">
         ⚡ VIEW MY CARD
       </button>
     </form>
   </div>
-
 </main>
 
 <footer class="site-footer">
@@ -172,28 +267,10 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);curso
 function handleTeacherSubmit(e) {
   e.preventDefault();
   const inputName = document.getElementById('teacherNameInput').value.trim();
-
   if (!inputName) return;
-
   sessionStorage.setItem('searchTeacherName', inputName);
-  window.location.href = `card.html?name=${encodeURIComponent(inputName)}`;
+  window.location.href = 'card.html?name=' + encodeURIComponent(inputName);
 }
-
-// Mouse glow & click splash
-window.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('mousemove', e => {
-    const glow = document.getElementById('mouseGlow');
-    if (glow) { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; }
-  });
-
-  document.addEventListener('click', e => {
-    if (e.target.closest('button, input, a')) return;
-    const s = document.createElement('div'); s.className = 'ink-splash';
-    const c = ['#FF2A54', '#CCFF00', '#00F0FF'][Math.floor(Math.random() * 3)];
-    s.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;background:radial-gradient(circle,${c}55,transparent)`;
-    document.body.appendChild(s); setTimeout(() => s.remove(), 500);
-  });
-});
 </script>
 </body>
 </html>
