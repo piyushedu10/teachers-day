@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="color-scheme" content="only light">
 <meta name="description" content="Inkpunk Brutalist Teacher's Day Tribute for Maheshwari Public School">
 <title>INKPUNK x Teacher's Day Zine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
-:root{
+:root {
+  color-scheme: only light;
   --ink:#0A0A0A;
   --paper:#F5F5F0;
   --pink:#FF2A54;
@@ -21,12 +23,18 @@
   --font-display:'Bricolage Grotesque',sans-serif;
   --font-hand:'Caveat Brush',cursive;
   --font-mono:'IBM Plex Mono',monospace;
-  --shadow-brutal:6px 6px 0px var(--ink);
+  --shadow-brutal:8px 8px 0px var(--ink);
   --shadow-brutal-sm:4px 4px 0px var(--ink);
 }
 
 html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{
+  background:var(--ink) !important;
+  color:var(--paper) !important;
+  font-family:var(--font-mono);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
 /* ========== SCROLL PROGRESS ========== */
 #scrollProgress{position:fixed;top:0;left:0;height:3px;background:var(--acid);z-index:10000;width:0%;will-change:width}
@@ -53,15 +61,14 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:100px 20px 80px;
+  padding:120px 20px 100px;
   overflow:hidden;
   text-align:center;
-  /* subtle dot grid background */
   background-image:radial-gradient(circle,rgba(204,255,0,.08) 1px,transparent 1px);
   background-size:28px 28px;
 }
 
-/* ---- FLOATING COLOR BLOBS (GPU: only transform+opacity) ---- */
+/* ---- FLOATING COLOR BLOBS ---- */
 .blob{
   position:absolute;
   border-radius:50%;
@@ -70,19 +77,19 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   z-index:1;
 }
 .blob-1{
-  width:260px;height:260px;
+  width:320px;height:320px;
   background:radial-gradient(circle at 40% 40%,rgba(255,42,84,.55),rgba(255,42,84,.0) 70%);
   top:-80px;left:-60px;
   animation:blobFloat1 7s ease-in-out infinite alternate;
 }
 .blob-2{
-  width:220px;height:220px;
+  width:280px;height:280px;
   background:radial-gradient(circle at 60% 40%,rgba(204,255,0,.45),rgba(204,255,0,.0) 70%);
   bottom:-60px;right:-50px;
   animation:blobFloat2 9s ease-in-out infinite alternate;
 }
 .blob-3{
-  width:160px;height:160px;
+  width:220px;height:220px;
   background:radial-gradient(circle at 50% 50%,rgba(0,240,255,.4),rgba(0,240,255,.0) 70%);
   top:30%;right:-30px;
   animation:blobFloat1 11s ease-in-out 1s infinite alternate;
@@ -106,7 +113,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   pointer-events:none;
   z-index:2;
   font-family:var(--font-mono);
-  font-size:22px;
+  font-size:24px;
   will-change:transform,opacity;
   animation:starPulse 4s ease-in-out infinite alternate;
 }
@@ -124,13 +131,13 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   will-change:transform;
 }
 .ring-1{
-  width:420px;height:420px;
+  width:460px;height:460px;
   border:1.5px dashed rgba(204,255,0,.18);
   top:50%;left:50%;
   animation:spinRing 40s linear infinite;
 }
 .ring-2{
-  width:620px;height:620px;
+  width:680px;height:680px;
   border:1px dashed rgba(255,42,84,.12);
   top:50%;left:50%;
   animation:spinRing 55s linear reverse infinite;
@@ -143,27 +150,27 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 /* ---- CHAPTER TAG ---- */
 .chapter{
   font-family:var(--font-mono);
-  font-size:10px;
+  font-size:clamp(11px, 2.5vw, 15px);
   letter-spacing:.38em;
   color:var(--pink);
   text-transform:uppercase;
   position:relative;
   z-index:10;
-  margin-bottom:22px;
+  margin-bottom:28px;
   opacity:0;
   animation:fadeUp .5s ease .2s forwards;
 }
 .chapter::before{content:'🎓 '}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ---- HERO LETTERS ---- */
+/* ---- HERO LETTERS (Significantly Enlarged) ---- */
 .hero-text{position:relative;z-index:10;width:100%}
-.hero-line{display:block;line-height:.92;overflow:hidden;letter-spacing:-.03em;margin-bottom:2px}
+.hero-line{display:block;line-height:.9;overflow:hidden;letter-spacing:-.03em;margin-bottom:6px}
 
 .letter{
   display:inline-block;
   font-family:var(--font-display);
-  font-size:clamp(50px,14vw,120px);
+  font-size:clamp(65px, 17vw, 160px);
   font-weight:800;
   text-transform:uppercase;
   color:var(--paper);
@@ -176,7 +183,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 @keyframes letterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
 .day-line .letter{
-  -webkit-text-stroke:2.5px var(--acid);
+  -webkit-text-stroke:3px var(--acid);
   color:transparent;
   -webkit-text-fill-color:transparent;
 }
@@ -193,12 +200,12 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 /* ---- HAND NOTE ---- */
 .hand-note{
   font-family:var(--font-hand);
-  font-size:clamp(15px,4vw,22px);
+  font-size:clamp(20px, 5.2vw, 32px);
   color:var(--cyan);
   position:relative;
   z-index:10;
   transform:rotate(-2deg);
-  margin-top:20px;
+  margin-top:28px;
   opacity:0;
   animation:fadeUp .6s ease 1.4s forwards;
   padding:0 10px;
@@ -207,12 +214,12 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 
 /* ---- EST BADGE ---- */
 .est{
-  margin-top:18px;
+  margin-top:24px;
   font-family:var(--font-mono);
-  font-size:10px;
+  font-size:clamp(11px, 2.5vw, 15px);
   letter-spacing:.15em;
-  border:2px solid var(--acid);
-  padding:7px 14px;
+  border:2.5px solid var(--acid);
+  padding:8px 18px;
   color:var(--acid);
   z-index:10;
   position:relative;
@@ -245,7 +252,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   overflow:hidden;
   border-top:3px solid var(--ink);
   border-bottom:3px solid var(--ink);
-  padding:10px 0;
+  padding:12px 0;
   z-index:5;
   position:relative;
   background:var(--charcoal);
@@ -258,11 +265,11 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 }
 .ticker span{
   font-family:var(--font-display);
-  font-size:clamp(28px,6vw,60px);
+  font-size:clamp(32px,7vw,70px);
   font-weight:800;
   text-transform:uppercase;
   white-space:nowrap;
-  padding:0 16px;
+  padding:0 20px;
   letter-spacing:-.02em;
 }
 .ticker span:nth-child(odd){-webkit-text-stroke:2px var(--acid);color:transparent}
@@ -274,14 +281,14 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
    ========================================= */
 .section-mps{
   min-height:100svh;
-  padding:70px 20px;
+  padding:90px 20px;
   position:relative;
   z-index:10;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--paper);
-  color:var(--ink);
+  background:var(--paper) !important;
+  color:var(--ink) !important;
   border-top:3px solid var(--ink);
   overflow:hidden;
 }
@@ -293,55 +300,57 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
   pointer-events:none;
   z-index:0;
 }
-.mps-container{max-width:580px;width:100%;text-align:center;position:relative;z-index:1}
+.mps-container{max-width:640px;width:100%;text-align:center;position:relative;z-index:1}
 .mps-badge{
   display:inline-block;
   font-family:var(--font-mono);
-  font-size:9px;font-weight:700;
-  letter-spacing:.2em;color:var(--acid);
-  background:var(--ink);
-  padding:6px 16px;
-  border:2px solid var(--ink);
+  font-size:clamp(11px, 2.5vw, 15px);
+  font-weight:700;
+  letter-spacing:.2em;color:var(--acid) !important;
+  background:var(--ink) !important;
+  padding:8px 18px;
+  border:2.5px solid var(--ink);
   box-shadow:var(--shadow-brutal-sm);
-  text-transform:uppercase;margin-bottom:18px;
+  text-transform:uppercase;margin-bottom:24px;
 }
 .mps-title{
   font-family:var(--font-display);
-  font-size:clamp(28px,7vw,56px);
+  font-size:clamp(34px, 8.5vw, 72px);
   font-weight:800;line-height:.95;
   text-transform:uppercase;
-  margin-bottom:24px;
+  margin-bottom:28px;
   letter-spacing:-.03em;
-  color:var(--ink);
+  color:var(--ink) !important;
 }
-.mps-title em{font-style:normal;color:var(--pink)}
+.mps-title em{font-style:normal;color:var(--pink) !important}
 .mps-card{
-  background:#FFF;
-  border:3px solid var(--ink);
-  padding:32px 20px;
+  background:#FFF !important;
+  border:4px solid var(--ink) !important;
+  padding:40px 24px;
   box-shadow:var(--shadow-brutal);
-  position:relative;margin-top:14px;text-align:left;
+  position:relative;margin-top:16px;text-align:left;
 }
 .mps-card::before{
   content:'';
   position:absolute;top:-10px;left:50%;
   transform:translateX(-50%);
-  width:90px;height:18px;
-  background:rgba(204,255,0,.9);
+  width:110px;height:20px;
+  background:rgba(204,255,0,.9) !important;
   border:1px solid rgba(0,0,0,.2);z-index:20;
 }
 .mps-quote{
   font-family:var(--font-hand);
-  font-size:clamp(18px,4.5vw,28px);
-  line-height:1.4;color:var(--ink);margin-bottom:20px;
+  font-size:clamp(22px, 5.2vw, 34px);
+  line-height:1.4;color:var(--ink) !important;margin-bottom:24px;
 }
 .mps-footer-note{
   font-family:var(--font-mono);
-  font-size:10px;font-weight:700;
-  letter-spacing:.12em;color:var(--pink);
+  font-size:clamp(11px, 2.8vw, 15px);
+  font-weight:700;
+  letter-spacing:.12em;color:var(--pink) !important;
   text-transform:uppercase;
   border-top:2px dashed var(--ink);
-  padding-top:14px;
+  padding-top:18px;
   display:flex;flex-direction:column;gap:6px;
 }
 
@@ -349,51 +358,51 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
    NEXT PAGE BUTTON
    ========================================= */
 .next-wrap{
-  padding:60px 20px;text-align:center;
+  padding:80px 20px;text-align:center;
   position:relative;z-index:10;
-  background:var(--ink);
-  /* subtle cross pattern */
+  background:var(--ink) !important;
   background-image:radial-gradient(circle,rgba(204,255,0,.06) 1px,transparent 1px);
   background-size:24px 24px;
   background-color:var(--ink);
 }
 .next-btn{
   display:inline-flex;
-  align-items:center;justify-content:center;gap:10px;
-  background:var(--acid);
-  border:3px solid var(--ink);
-  color:var(--ink);
-  padding:16px 36px;
+  align-items:center;justify-content:center;gap:12px;
+  background:var(--acid) !important;
+  border:3.5px solid var(--ink) !important;
+  color:var(--ink) !important;
+  padding:18px 40px;
   font-family:var(--font-mono);
-  font-size:13px;font-weight:700;
+  font-size:14px;font-weight:700;
   letter-spacing:.18em;text-transform:uppercase;
   cursor:pointer;position:relative;
   box-shadow:var(--shadow-brutal);
   transition:transform .15s,box-shadow .15s;
   text-decoration:none;
   -webkit-user-select:none;user-select:none;
-  max-width:300px;width:90%;
+  max-width:320px;width:90%;
 }
 .next-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
-.btn-arrow{display:inline-block;font-size:16px}
+.btn-arrow{display:inline-block;font-size:18px}
 
 /* =========================================
    FOOTER
    ========================================= */
 .site-footer{
-  padding:36px 20px;text-align:center;
-  background:var(--ink);color:var(--paper);
+  padding:44px 20px;text-align:center;
+  background:var(--ink) !important;
+  color:var(--paper) !important;
   border-top:3px solid var(--acid);
   position:relative;z-index:10;
 }
-.footer-text{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#888}
-.footer-heart{color:var(--pink);display:inline-block;animation:heartBeat 1.5s ease-in-out infinite}
+.footer-text{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#888 !important}
+.footer-heart{color:var(--pink) !important;display:inline-block;animation:heartBeat 1.5s ease-in-out infinite}
 @keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}}
 
 .by-piyush-watermark{
   position:fixed;bottom:16px;left:16px;
   font-family:var(--font-hand);font-size:16px;
-  color:var(--acid);opacity:.65;
+  color:var(--acid) !important;opacity:.65;
   z-index:9998;pointer-events:none;user-select:none;
   text-shadow:0 0 10px rgba(204,255,0,.4);
 }
@@ -401,9 +410,9 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 /* Desktop-only hover effects */
 @media(hover:hover){
   .letter{cursor:default;transition:transform .2s ease,color .15s}
-  .letter:hover{color:var(--acid);-webkit-text-fill-color:var(--acid);transform:translateY(-12px) scale(1.14)!important}
-  .next-btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--pink);background:var(--cyan)}
-  .est:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--acid);background:var(--acid);color:var(--ink)}
+  .letter:hover{color:var(--acid) !important;-webkit-text-fill-color:var(--acid) !important;transform:translateY(-12px) scale(1.14)!important}
+  .next-btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--pink);background:var(--cyan) !important;color:var(--ink) !important}
+  .est:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--acid);background:var(--acid) !important;color:var(--ink) !important}
 }
 </style>
 </head>
@@ -477,7 +486,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
       <p class="mps-quote">"To our extraordinary educators at Maheshwari Public School: You don't just teach lessons from textbooks — you shape character, ignite lifelong curiosity, and build the leaders of tomorrow. Thank you for your tireless dedication, endless patience, and unwavering belief in every student's potential."</p>
       <div class="mps-footer-note">
         <span>— WITH RESPECT &amp; GRATITUDE</span>
-        <span>TEACHER'S DAY 2024</span>
+        <span>TEACHER'S DAY 2026</span>
       </div>
     </div>
   </div>
@@ -493,7 +502,7 @@ body{background:var(--ink);color:var(--paper);font-family:var(--font-mono);overf
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <p class="footer-text">CRAFTED WITH <span class="footer-heart">♥</span> FOR EVERY TEACHER — INKPUNK x 2024</p>
+  <p class="footer-text">CRAFTED WITH <span class="footer-heart">♥</span> FOR EVERY TEACHER — INKPUNK x 2026</p>
 </footer>
 
 <script>

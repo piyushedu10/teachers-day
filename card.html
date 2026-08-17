@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="color-scheme" content="only light">
 <meta name="description" content="Tribute Card - INKPUNK Teacher's Day Zine">
 <title>INKPUNK x Teacher's Digital Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 :root{
+  color-scheme: only light;
   --ink:#0A0A0A;
   --paper:#F5F5F0;
   --pink:#FF2A54;
@@ -27,8 +29,8 @@
 
 html{scroll-behavior:smooth}
 body{
-  background:var(--ink);
-  color:var(--paper);
+  background:var(--ink) !important;
+  color:var(--paper) !important;
   font-family:var(--font-mono);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
@@ -48,7 +50,7 @@ body{
 
 /* Top Navigation Bar */
 .top-bar{
-  padding:16px 20px;
+  padding:20px 24px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -63,11 +65,11 @@ body{
   align-items:center;
   gap:6px;
   background:none;
-  border:2px solid var(--acid);
+  border:2.5px solid var(--acid);
   color:var(--acid);
-  padding:8px 14px;
+  padding:10px 16px;
   font-family:var(--font-mono);
-  font-size:10px;
+  font-size:clamp(11px, 2.5vw, 14px);
   font-weight:700;
   letter-spacing:.15em;
   text-transform:uppercase;
@@ -78,7 +80,7 @@ body{
   user-select:none;
 }
 .btn-nav:active{background:var(--acid);color:var(--ink)}
-.page-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--pink);text-transform:uppercase}
+.page-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;color:var(--pink);text-transform:uppercase}
 
 /* SUBJECT DYNAMIC BACKGROUND ELEMENTS */
 .subject-bg-container{
@@ -87,7 +89,6 @@ body{
   pointer-events:none;
   z-index:1;
   overflow:hidden;
-  /* dot grid */
   background-image:radial-gradient(circle,rgba(204,255,0,.04) 1px,transparent 1px);
   background-size:24px 24px;
 }
@@ -95,7 +96,7 @@ body{
 .wordsmith-quote-mark{
   position:absolute;
   font-family:var(--font-display);
-  font-size:clamp(140px,25vw,300px);
+  font-size:clamp(160px,30vw,340px);
   font-weight:900;
   color:var(--acid);
   opacity:.04;
@@ -128,10 +129,10 @@ body{
 .subject-badge-pill{
   position:absolute;
   font-family:var(--font-mono);
-  font-size:9px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.2em;
-  padding:6px 14px;
+  padding:8px 16px;
   border:1px dashed var(--acid);
   color:var(--acid);
   background:rgba(10,10,10,.6);
@@ -148,10 +149,10 @@ body{
 
 /* MAIN CARD CONTAINER */
 .card-container{
-  max-width:520px;
+  max-width:560px;
   width:100%;
   margin:0 auto;
-  padding:16px 20px 60px;
+  padding:24px 20px 80px;
   position:relative;
   z-index:10;
   display:flex;
@@ -159,18 +160,18 @@ body{
   align-items:center;
 }
 
-.showcase-header{text-align:center;margin-bottom:24px}
+.showcase-header{text-align:center;margin-bottom:28px}
 .showcase-title{
   font-family:var(--font-display);
-  font-size:clamp(28px,7vw,54px);
+  font-size:clamp(32px, 8.5vw, 68px);
   font-weight:800;
   line-height:.95;
   text-transform:uppercase;
   letter-spacing:-.03em;
-  color:var(--paper);
+  color:var(--paper) !important;
 }
-.showcase-title em{font-style:normal;color:var(--acid)}
-.showcase-subtitle{margin-top:8px;font-size:10px;color:var(--pink);letter-spacing:.15em;text-transform:uppercase}
+.showcase-title em{font-style:normal;color:var(--acid) !important}
+.showcase-subtitle{margin-top:10px;font-size:clamp(11px, 2.5vw, 15px);color:var(--pink) !important;letter-spacing:.15em;text-transform:uppercase}
 
 /* DIGITAL CARD FRAME */
 .card-frame-wrapper{
@@ -182,10 +183,10 @@ body{
 @keyframes cardReveal{from{opacity:0;transform:translateY(30px) rotate(-3deg)}to{opacity:1;transform:translateY(0) rotate(-1.5deg)}}
 
 .card-frame{
-  background:var(--paper);
-  color:var(--ink);
-  border:3px solid var(--ink);
-  padding:28px 20px 20px;
+  background:var(--paper) !important;
+  color:var(--ink) !important;
+  border:4px solid var(--ink) !important;
+  padding:32px 24px 24px;
   box-shadow:var(--shadow-brutal);
   position:relative;
 }
@@ -194,8 +195,8 @@ body{
   position:absolute;
   top:-10px;left:50%;
   transform:translateX(-50%);
-  width:100px;height:20px;
-  background:rgba(204,255,0,.9);
+  width:110px;height:20px;
+  background:rgba(204,255,0,.9) !important;
   border:1px solid rgba(0,0,0,.2);
   z-index:20;
 }
@@ -205,66 +206,66 @@ body{
   justify-content:space-between;
   align-items:center;
   font-family:var(--font-mono);
-  font-size:9px;
+  font-size:11px;
   font-weight:700;
   letter-spacing:.15em;
-  color:#666;
+  color:#666 !important;
   border-bottom:2px dashed var(--ink);
-  padding-bottom:8px;
-  margin-bottom:18px;
+  padding-bottom:10px;
+  margin-bottom:20px;
 }
 
-.card-png-wrap{text-align:center;margin-bottom:16px}
+.card-png-wrap{text-align:center;margin-bottom:20px}
 .card-png-img{
   width:100%;
-  max-width:380px;
+  max-width:400px;
   height:auto;
-  border:3px solid var(--ink);
-  box-shadow:4px 4px 0 var(--ink);
+  border:3px solid var(--ink) !important;
+  box-shadow:5px 5px 0 var(--ink);
 }
 
 .card-quote-box{
   font-family:var(--font-hand);
-  font-size:clamp(18px,4.5vw,28px);
+  font-size:clamp(22px, 5.2vw, 34px);
   line-height:1.35;
-  color:var(--ink);
-  margin-bottom:16px;
+  color:var(--ink) !important;
+  margin-bottom:20px;
   text-align:left;
-  background:#FFF;
-  padding:14px 16px;
-  border:2.5px solid var(--ink);
+  background:#FFF !important;
+  padding:16px 20px;
+  border:3px solid var(--ink) !important;
   box-shadow:3px 3px 0 var(--ink);
 }
 .card-meta-bar{
   display:flex;
   justify-content:space-between;
   font-family:var(--font-mono);
-  font-size:10px;
+  font-size:12px;
   font-weight:700;
   border-top:2px solid var(--ink);
-  padding-top:12px;
-  margin-top:12px;
+  padding-top:14px;
+  margin-top:14px;
   flex-wrap:wrap;
-  gap:4px;
+  gap:6px;
 }
 
 /* SHARE CONTROLS */
 .action-controls{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:14px;
   width:100%;
-  margin-top:28px;
+  margin-top:32px;
 }
 .btn-action{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  border:3px solid var(--ink);
-  padding:15px;
+  gap:10px;
+  border:3.5px solid var(--ink) !important;
+  padding:16px;
   font-family:var(--font-mono);
-  font-size:12px;
+  font-size:13px;
   font-weight:700;
   letter-spacing:.15em;
   text-transform:uppercase;
@@ -275,23 +276,23 @@ body{
   -webkit-user-select:none;
   user-select:none;
 }
-.btn-action.btn-ig{background:var(--pink);color:var(--paper)}
-.btn-action.btn-wa{background:#25D366;color:var(--ink)}
-.btn-action.btn-save{background:var(--acid);color:var(--ink)}
+.btn-action.btn-ig{background:var(--pink) !important;color:var(--paper) !important}
+.btn-action.btn-wa{background:#25D366 !important;color:var(--ink) !important}
+.btn-action.btn-save{background:var(--acid) !important;color:var(--ink) !important}
 .btn-action:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
 
 /* FOOTER */
 .site-footer{
-  padding:32px 20px;
+  padding:36px 20px;
   text-align:center;
-  background:var(--ink);
-  color:var(--paper);
+  background:var(--ink) !important;
+  color:var(--paper) !important;
   border-top:3px solid var(--acid);
   position:relative;
   z-index:10;
 }
-.footer-text{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#888}
-.footer-heart{color:var(--pink);display:inline-block;animation:heartBeat 1.5s ease-in-out infinite}
+.footer-text{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#888 !important}
+.footer-heart{color:var(--pink) !important;display:inline-block;animation:heartBeat 1.5s ease-in-out infinite}
 @keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}}
 
 /* WATERMARK */
@@ -301,7 +302,7 @@ body{
   z-index:9998;
   font-family:var(--font-hand);
   font-size:16px;
-  color:var(--acid);
+  color:var(--acid) !important;
   opacity:0.65;
   pointer-events:none;
   user-select:none;
@@ -309,10 +310,10 @@ body{
 }
 
 @media(hover:hover){
-  .btn-nav:hover{background:var(--acid);color:var(--ink)}
-  .btn-action.btn-ig:hover{background:var(--cyan);color:var(--ink);box-shadow:8px 8px 0 var(--acid);transform:translate(-3px,-3px)}
-  .btn-action.btn-wa:hover{background:var(--acid);color:var(--ink);box-shadow:8px 8px 0 var(--pink);transform:translate(-3px,-3px)}
-  .btn-action.btn-save:hover{background:var(--cyan);color:var(--ink);box-shadow:8px 8px 0 var(--pink);transform:translate(-3px,-3px)}
+  .btn-nav:hover{background:var(--acid) !important;color:var(--ink) !important}
+  .btn-action.btn-ig:hover{background:var(--cyan) !important;color:var(--ink) !important;box-shadow:8px 8px 0 var(--acid);transform:translate(-3px,-3px)}
+  .btn-action.btn-wa:hover{background:var(--acid) !important;color:var(--ink) !important;box-shadow:8px 8px 0 var(--pink);transform:translate(-3px,-3px)}
+  .btn-action.btn-save:hover{background:var(--cyan) !important;color:var(--ink) !important;box-shadow:8px 8px 0 var(--pink);transform:translate(-3px,-3px)}
   .card-frame-wrapper:hover{transform:rotate(0deg) scale(1.015)}
 }
 </style>
@@ -326,7 +327,7 @@ body{
 <div class="border-anim border-left"></div>
 <div class="border-anim border-right"></div>
 
-<!-- Subject Dynamic Background Elements -->
+<!-- Subject Background Elements -->
 <div class="subject-bg-container" id="subjectBgContainer">
   <div class="wordsmith-quote-mark quote-top-left">“</div>
   <div class="wordsmith-quote-mark quote-bottom-right">”</div>
@@ -347,7 +348,7 @@ body{
 <main class="card-container">
   <div class="showcase-header">
     <h1 class="showcase-title" id="showcaseTitle">TRIBUTE CARD</h1>
-    <p class="showcase-subtitle" id="showcaseSubtitle">MAHESHWARI PUBLIC SCHOOL — TEACHER'S DAY 2024</p>
+    <p class="showcase-subtitle" id="showcaseSubtitle">MAHESHWARI PUBLIC SCHOOL — TEACHER'S DAY 2026</p>
   </div>
 
   <div class="card-frame-wrapper">
@@ -457,7 +458,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('quoteBox').textContent = `"To an extraordinary educator: Thank you for your endless dedication, wisdom, and guidance at Maheshwari Public School. Happy Teacher's Day!"`;
     document.getElementById('metaHonoring').textContent = `HONORING: ${teacherDisplayName}`;
-    document.getElementById('metaRole').textContent = `DATE: SEPT 05, 2024`;
+    document.getElementById('metaRole').textContent = `DATE: SEPT 05, 2026`;
     saveBtn.style.display = 'none';
 
     document.getElementById('bgPill1').textContent = `TEACHER'S DAY • SPECIAL TRIBUTE`;
@@ -525,7 +526,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => p.remove(), 8000);
   }
 
-  // Slower interval for mobile battery & CPU optimization
   let particleTimer = setInterval(() => {
     spawnParticle(Math.random() * window.innerWidth, window.innerHeight - 30);
   }, 1800);
