@@ -688,5 +688,93 @@ const TEACHERS_DATABASE = [
     "role": "Mapping journeys, guiding futures.",
     "cardImg": "cards/sanjay_sir_geography.jpeg",
     "quote": "For turning maps into meaning, and every lesson into a deeper understanding of our world. — MPS FAMILY"
+  },
+  {
+    "id": "jitender_sir",
+    "name": "Jitender Sir",
+    "aliases": [
+      "jitender",
+      "jitender sir",
+      "jitender sir head admin panel",
+      "jitender sir admin",
+      "admin"
+    ],
+    "subject": "Administration",
+    "role": "Head Admin Panel",
+    "cardImg": "cards/jitender_sir_headadminpanel.jpeg",
+    "quote": "For coordinating operations, managing with efficiency, and keeping our institution strong behind the scenes. — MPS FAMILY"
+  },
+  {
+    "id": "kishan_sir",
+    "name": "Kishan Sir",
+    "aliases": [
+      "kishan",
+      "kishan sir",
+      "kishan sir accountancy",
+      "kishan sir commerce"
+    ],
+    "subject": "Accountancy",
+    "role": "The Accounts Guru",
+    "cardImg": "cards/kishan_sir_accountancy.jpeg",
+    "quote": "For balancing our concepts, ledgering our knowledge, and teaching us the asset of hard work. — MPS FAMILY"
+  },
+  {
+    "id": "komal_maam",
+    "name": "Komal Ma'am",
+    "aliases": [
+      "komal",
+      "komal maam",
+      "komal mam",
+      "komal ma'am",
+      "receptionist",
+      "komal receptionist"
+    ],
+    "subject": "Receptionist",
+    "role": "The Welcoming Smile",
+    "cardImg": "cards/komal_maam_receptionist.jpeg",
+    "quote": "For greeting every question with patience, every person with kindness, and coordinating our daily connections. — MPS FAMILY"
+  },
+  {
+    "id": "krishan_sir",
+    "name": "Krishan Sir",
+    "aliases": [
+      "krishan",
+      "krishan sir",
+      "krishan sir economics"
+    ],
+    "subject": "Economics",
+    "role": "The Economics Guide",
+    "cardImg": "cards/krishan_sir_economics.jpeg",
+    "quote": "For teaching us the logic of demand and supply, and guiding us through the complexities of life's choices. — MPS FAMILY"
+  },
+  {
+    "id": "meenakshi_maam",
+    "name": "Meenakshi Ma'am",
+    "aliases": [
+      "meenakshi",
+      "meenakshi maam",
+      "meenakshi mam",
+      "meenakshi ma'am",
+      "meenakshi mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/meenakshi_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "prerna_maam",
+    "name": "Prerna Ma'am",
+    "aliases": [
+      "prerna",
+      "prerna maam",
+      "prerna mam",
+      "prerna ma'am",
+      "prerna mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/prerna_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
   }
 ];
