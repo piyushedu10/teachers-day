@@ -87,7 +87,7 @@ const TEACHERS_DATABASE = [
     ],
     "subject": "Math",
     "role": "The Maths Mentor",
-    "cardImg": "cards/sumit_sir.jpg",
+    "cardImg": "cards/sumit_sir.jpeg",
     "quote": "For turning confusion into clarity, problems into solutions, and numbers into confidence. — MPS"
   },
   {
@@ -775,6 +775,125 @@ const TEACHERS_DATABASE = [
     "subject": "Mother Teacher",
     "role": "The Mother Teacher",
     "cardImg": "cards/prerna_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "anita_maam",
+    "name": "Anita Ma'am",
+    "aliases": [
+      "anita",
+      "anita maam",
+      "anita mam",
+      "anita ma'am",
+      "anita mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/anita_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "devika_maam",
+    "name": "Devika Ma'am",
+    "aliases": [
+      "devika",
+      "devika maam",
+      "devika mam",
+      "devika ma'am",
+      "receptionist",
+      "devika receptionist"
+    ],
+    "subject": "Receptionist",
+    "role": "The Welcoming Smile",
+    "cardImg": "cards/devika_maam_receptionist.jpeg",
+    "quote": "For greeting every question with patience, every person with kindness, and coordinating our daily connections. — MPS FAMILY"
+  },
+  {
+    "id": "kavita_maam_motherteacher",
+    "name": "Kavita Ma'am",
+    "aliases": [
+      "kavita mother teacher",
+      "kavita maam mother teacher",
+      "kavita mam mother teacher",
+      "kavita primary"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/kavita_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "manju_maam",
+    "name": "Manju Ma'am",
+    "aliases": [
+      "manju",
+      "manju maam",
+      "manju mam",
+      "manju ma'am",
+      "manju mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/manju_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "manshu_sir",
+    "name": "Manshu Sir",
+    "aliases": [
+      "manshu",
+      "manshu sir",
+      "manshu maths",
+      "manshu sir maths"
+    ],
+    "subject": "Math",
+    "role": "The Maths Mentor",
+    "cardImg": "cards/manshu_sir_maths.jpeg",
+    "quote": "For turning confusion into clarity, problems into solutions, and numbers into confidence. — MPS"
+  },
+  {
+    "id": "swati_maam",
+    "name": "Swati Ma'am",
+    "aliases": [
+      "swati",
+      "swati maam",
+      "swati mam",
+      "swati ma'am",
+      "swati mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/swati_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "vaishali_maam",
+    "name": "Vaishali Ma'am",
+    "aliases": [
+      "vaishali",
+      "vaishali maam",
+      "vaishali mam",
+      "vaishali ma'am",
+      "vaishali mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/vaishali_maam_motherteacher.jpeg",
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+  },
+  {
+    "id": "viva_maam",
+    "name": "Viva Ma'am",
+    "aliases": [
+      "viva",
+      "viva maam",
+      "viva mam",
+      "viva ma'am",
+      "viva mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/viva_maam_motherteacher.jpeg",
     "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
   }
 ];
