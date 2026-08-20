@@ -298,15 +298,16 @@ body{
 /* WATERMARK */
 .watermark{
   position:fixed;
-  bottom:16px;left:16px;
+  bottom:18px;left:18px;
   z-index:9998;
   font-family:var(--font-hand);
-  font-size:16px;
+  font-size:22px;
   color:var(--acid) !important;
-  opacity:0.65;
+  opacity:1;
   pointer-events:none;
   user-select:none;
-  text-shadow:0 0 10px rgba(204,255,0,0.4);
+  text-shadow:0 0 16px rgba(204,255,0,.9), 0 0 4px rgba(204,255,0,.5);
+  letter-spacing:.02em;
 }
 
 @media(hover:hover){
