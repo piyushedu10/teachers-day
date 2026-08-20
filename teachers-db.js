@@ -894,6 +894,177 @@ const TEACHERS_DATABASE = [
     "subject": "Mother Teacher",
     "role": "The Mother Teacher",
     "cardImg": "cards/viva_maam_motherteacher.jpeg",
-    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
+    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. 🌸 — MPS FAMILY"
+  },
+  {
+    "id": "anjali_maam_motherteacher",
+    "name": "Anjali Ma'am",
+    "aliases": [
+      "anjali",
+      "anjali maam",
+      "anjali mam",
+      "anjali ma'am",
+      "anjali mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/anjali_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "himanshi_maam_motherteacher",
+    "name": "Himanshi Ma'am",
+    "aliases": [
+      "himanshi",
+      "himanshi maam",
+      "himanshi mam",
+      "himanshi ma'am",
+      "himanshi mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/himanshi_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "jyoti_maam_motherteacher",
+    "name": "Jyoti Ma'am",
+    "aliases": [
+      "jyoti",
+      "jyoti maam",
+      "jyoti mam",
+      "jyoti ma'am",
+      "jyoti mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/jyoti_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "pooja_maam_motherteacher_1",
+    "name": "Pooja Ma'am",
+    "aliases": [
+      "pooja",
+      "pooja maam",
+      "pooja mam",
+      "pooja ma'am",
+      "pooja mother teacher",
+      "pooja maam mother",
+      "pooja motherteacher 1"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/pooja_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "pooja_maam_motherteacher_2",
+    "name": "Pooja Ma'am",
+    "aliases": [
+      "pooja",
+      "pooja maam",
+      "pooja mam",
+      "pooja ma'am",
+      "pooja mother teacher 2",
+      "pooja maam mother 2",
+      "pooja motherteacher 2"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/pooja_maam_motherteacher (2).jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "poonam_maam_motherteacher",
+    "name": "Poonam Ma'am",
+    "aliases": [
+      "poonam",
+      "poonam maam",
+      "poonam mam",
+      "poonam ma'am",
+      "poonam mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/poonam_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "radhika_maam_motherteacher",
+    "name": "Radhika Ma'am",
+    "aliases": [
+      "radhika",
+      "radhika maam",
+      "radhika mam",
+      "radhika ma'am",
+      "radhika mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/radhika_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "saanvi_maam_motherteacher",
+    "name": "Saanvi Ma'am",
+    "aliases": [
+      "saanvi",
+      "saanvi maam",
+      "saanvi mam",
+      "saanvi ma'am",
+      "saanvi mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/saanvi_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "sharda_maam_motherteacher",
+    "name": "Sharda Ma'am",
+    "aliases": [
+      "sharda",
+      "sharda maam",
+      "sharda mam",
+      "sharda ma'am",
+      "sharda mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/sharda_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "srishti_maam_science",
+    "name": "Srishti Ma'am",
+    "aliases": [
+      "srishti",
+      "srishti maam",
+      "srishti mam",
+      "srishti ma'am",
+      "srishti science"
+    ],
+    "subject": "Science",
+    "role": "The Science Trailblazer",
+    "cardImg": "cards/srishti_maam_science.jpeg",
+    "quote": "For igniting our curiosity, conducting discoveries, and teaching us to always ask 'why'. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "veenna_maam_motherteacher",
+    "name": "Veenna Ma'am",
+    "aliases": [
+      "veenna",
+      "veenna maam",
+      "veenna mam",
+      "veenna ma'am",
+      "veenna mother teacher",
+      "veena maam",
+      "veena"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/veenna_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
   }
 ];

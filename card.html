@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -316,11 +316,98 @@ body{
   .btn-action.btn-save:hover{background:var(--cyan) !important;color:var(--ink) !important;box-shadow:8px 8px 0 var(--pink);transform:translate(-3px,-3px)}
   .card-frame-wrapper:hover{transform:rotate(0deg) scale(1.015)}
 }
+
+/* ── Disambiguation Picker Overlay ── */
+#disambigOverlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(10,10,10,.96);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:24px 16px;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+#disambigOverlay.active{opacity:1;pointer-events:all}
+.disambig-title{
+  font-family:var(--font-display);
+  font-size:clamp(26px,7vw,52px);
+  font-weight:800;
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  color:var(--paper);
+  text-align:center;
+  margin-bottom:8px;
+  animation:fadeUp .4s ease both;
+}
+.disambig-title em{font-style:normal;color:var(--acid)}
+.disambig-sub{
+  font-family:var(--font-mono);
+  font-size:clamp(10px,2.5vw,13px);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#777;
+  margin-bottom:36px;
+  text-align:center;
+  animation:fadeUp .4s ease .1s both;
+}
+.disambig-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  justify-content:center;
+  width:100%;
+  max-width:700px;
+}
+.disambig-card{
+  background:var(--paper);
+  border:4px solid var(--ink);
+  box-shadow:6px 6px 0 var(--acid);
+  cursor:pointer;
+  width:clamp(150px,38vw,200px);
+  overflow:hidden;
+  transition:transform .18s,box-shadow .18s;
+  animation:fadeUp .4s ease both;
+  position:relative;
+}
+.disambig-card:nth-child(2){animation-delay:.08s}
+.disambig-card:nth-child(3){animation-delay:.16s}
+.disambig-card:active,.disambig-card:hover{
+  transform:translate(-4px,-4px);
+  box-shadow:10px 10px 0 var(--pink);
+}
+.disambig-card img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;display:block;
+}
+.disambig-card-label{
+  padding:10px 12px;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-mono);
+  font-size:clamp(9px,2.2vw,12px);
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  line-height:1.4;
+}
+.disambig-card-subject{
+  font-size:clamp(8px,2vw,10px);
+  color:var(--acid);
+  letter-spacing:.18em;
+  margin-top:2px;
+}
 </style>
 </head>
 <body>
 
 <div class="watermark" id="watermark">✦ By Piyush Mundhra</div>
+
+<!-- Disambiguation Picker Overlay -->
+<div id="disambigOverlay">
+  <p class="disambig-title" id="disambigTitle">WHICH <em>TEACHER</em>?</p>
+  <p class="disambig-sub">Multiple teachers found — tap your card below</p>
+  <div class="disambig-grid" id="disambigGrid"></div>
+</div>
 
 <div class="border-anim border-top"></div>
 <div class="border-anim border-bottom"></div>
@@ -395,20 +482,56 @@ body{
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
-  const searchName = (params.get('name') || sessionStorage.getItem('searchTeacherName') || 'Shweta').trim().toLowerCase();
+  const rawSearch = (params.get('name') || sessionStorage.getItem('searchTeacherName') || 'Shweta').trim();
+  const searchName = rawSearch.toLowerCase();
 
-  let match = TEACHERS_DATABASE.find(t => t.name.toLowerCase() === searchName);
-  if (!match) {
-    match = TEACHERS_DATABASE.find(t => t.aliases.some(alias => alias.toLowerCase() === searchName));
+  // ── Multi-match lookup ──
+  function findAllMatches(query) {
+    let results = TEACHERS_DATABASE.filter(t => t.name.toLowerCase() === query);
+    if (!results.length)
+      results = TEACHERS_DATABASE.filter(t => t.aliases.some(a => a.toLowerCase() === query));
+    if (!results.length)
+      results = TEACHERS_DATABASE.filter(t => t.name.toLowerCase().includes(query));
+    if (!results.length)
+      results = TEACHERS_DATABASE.filter(t =>
+        t.aliases.some(a => a.toLowerCase().includes(query) || query.includes(a.toLowerCase()))
+      );
+    return results;
   }
-  if (!match) {
-    match = TEACHERS_DATABASE.find(t => t.name.toLowerCase().includes(searchName));
+
+  const allMatches = findAllMatches(searchName);
+
+  // ── Disambiguation: show picker if multiple DISTINCT cards found ──
+  if (allMatches.length > 1) {
+    const overlay = document.getElementById('disambigOverlay');
+    const grid = document.getElementById('disambigGrid');
+    // Update title with actual name
+    const firstName = allMatches[0].name.replace(/Ma'am|Sir/gi, '').trim();
+    document.getElementById('disambigTitle').innerHTML = `WHICH <em>${firstName.toUpperCase()}</em>?`;
+    overlay.classList.add('active');
+    allMatches.forEach((teacher, i) => {
+      const card = document.createElement('div');
+      card.className = 'disambig-card';
+      card.style.animationDelay = (i * 0.08) + 's';
+      const img = document.createElement('img');
+      img.src = teacher.cardImg || '';
+      img.alt = teacher.name;
+      img.loading = 'lazy';
+      const label = document.createElement('div');
+      label.className = 'disambig-card-label';
+      label.innerHTML = `${teacher.name}<div class="disambig-card-subject">${teacher.subject.toUpperCase()}</div>`;
+      card.appendChild(img);
+      card.appendChild(label);
+      card.addEventListener('click', () => {
+        overlay.classList.remove('active');
+        renderCard(teacher);
+      });
+      grid.appendChild(card);
+    });
+    return; // wait for user pick
   }
-  if (!match) {
-    match = TEACHERS_DATABASE.find(t => 
-      t.aliases.some(alias => alias.toLowerCase().includes(searchName) || searchName.includes(alias.toLowerCase()))
-    );
-  }
+
+  const match = allMatches[0] || null;
 
   const imgEl = document.getElementById('cardImage');
   const saveBtn = document.getElementById('saveBtn');
@@ -531,10 +654,69 @@ window.addEventListener('DOMContentLoaded', () => {
   }, 1800);
 
   document.addEventListener('click', e => {
-    if (e.target.closest('button, input, a')) return;
+    if (e.target.closest('button, input, a, .disambig-card')) return;
     spawnParticle(e.clientX, e.clientY);
   });
 });
+
+function renderCard(match) {
+  // Wrap the whole card rendering logic so it can be called after disambiguation
+  const params = new URLSearchParams(window.location.search);
+  const rawSearch = (params.get('name') || sessionStorage.getItem('searchTeacherName') || 'Teacher').trim();
+  const searchName = rawSearch.toLowerCase();
+  const imgEl = document.getElementById('cardImage');
+  const saveBtn = document.getElementById('saveBtn');
+  const waBtn = document.getElementById('waBtn');
+  let teacherDisplayName = 'Teacher';
+
+  if (match) {
+    teacherDisplayName = match.name;
+    document.getElementById('showcaseTitle').innerHTML = `TRIBUTE TO <em>${match.name.toUpperCase()}</em>`;
+    document.getElementById('badgeSubject').textContent = match.subject.toUpperCase();
+    if (match.cardImg) {
+      imgEl.src = match.cardImg;
+      saveBtn.href = match.cardImg;
+      saveBtn.download = `${match.name.replace(/\s+/g, '_')}_Teacher_Card.jpg`;
+      saveBtn.style.display = 'inline-flex';
+    } else {
+      document.getElementById('pngWrap').style.display = 'none';
+      saveBtn.style.display = 'none';
+    }
+    document.getElementById('quoteBox').textContent = `"${match.quote || "Happy Teacher's Day!"}"`;
+    document.getElementById('metaHonoring').textContent = `HONORING: ${match.name}`;
+    document.getElementById('metaRole').textContent = `ROLE: ${match.role || match.subject}`;
+    document.getElementById('bgPill1').textContent = `${match.subject.toUpperCase()} • ${(match.role || '').toUpperCase()}`;
+    const subL = match.subject.toLowerCase();
+    document.getElementById('bgPill2').textContent =
+      subL.includes('math') ? 'LOGIC & EQUATIONS' :
+      subL.includes('principal') ? 'LEADERSHIP & VISION' :
+      subL.includes('coordinator') ? 'LEADERSHIP & MENTORSHIP' :
+      subL.includes('music') ? 'HARMONY & MELODY' :
+      subL.includes('science') ? 'EXPERIMENTS & DISCOVERY' :
+      subL.includes('evs') ? 'ENVIRONMENT & NATURE' :
+      subL.includes('drawing') ? 'ART & IMAGINATION' :
+      (subL.includes('phe') || subL.includes('physical') || subL.includes('pti')) ? 'SPORTS & FITNESS' :
+      (subL === 'it' || subL.includes('computer') || subL.includes('ai')) ? 'CODE & INNOVATION' :
+      subL.includes('communication') ? 'VOICE & CONNECT' :
+      (subL.includes('event') || subL.includes('manger') || subL.includes('manager')) ? 'CREATING MEMORIES' :
+      (subL.includes('studies') || subL.includes('sst') || subL.includes('history') || subL.includes('geography')) ? 'HISTORY & GEOGRAPHY' :
+      'LANGUAGE & EXPRESSION';
+  } else {
+    teacherDisplayName = searchName ? (searchName.charAt(0).toUpperCase() + searchName.slice(1)) : 'Teacher';
+    document.getElementById('showcaseTitle').innerHTML = `TRIBUTE TO <em>${teacherDisplayName.toUpperCase()}</em>`;
+    document.getElementById('badgeSubject').textContent = `TEACHER'S DAY`;
+    document.getElementById('pngWrap').style.display = 'none';
+    document.getElementById('quoteBox').textContent = `"To an extraordinary educator: Thank you for your endless dedication, wisdom, and guidance at Maheshwari Public School. Happy Teacher's Day!"`;
+    document.getElementById('metaHonoring').textContent = `HONORING: ${teacherDisplayName}`;
+    document.getElementById('metaRole').textContent = `DATE: SEPT 05, 2026`;
+    saveBtn.style.display = 'none';
+    document.getElementById('bgPill1').textContent = `TEACHER'S DAY • SPECIAL TRIBUTE`;
+    document.getElementById('bgPill2').textContent = `MAHESHWARI PUBLIC SCHOOL`;
+  }
+
+  const shareText = `🎓 Happy Teacher's Day! Check out the digital tribute card for ${teacherDisplayName} at Maheshwari Public School: ${window.location.href}`;
+  waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+}
 </script>
 </body>
 </html>
