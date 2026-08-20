@@ -1066,5 +1066,20 @@ const TEACHERS_DATABASE = [
     "role": "The Mother Teacher",
     "cardImg": "cards/veenna_maam_motherteacher.jpeg",
     "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "yogesh_sir_manager",
+    "name": "Yogesh Sir",
+    "aliases": [
+      "yogesh",
+      "yogesh sir",
+      "yogesh manager",
+      "yogesh sir manager",
+      "yogesh manger"
+    ],
+    "subject": "Manager",
+    "role": "The Steadfast Leader",
+    "cardImg": "cards/yogesh_sir_manager.jpeg",
+    "quote": "A great manager builds a team. A true leader builds people and creates a legacy. Thank you for your leadership, guidance, and constant support. Your vision and dedication drive us to achieve more every day. — MPS"
   }
 ];
