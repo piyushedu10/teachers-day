@@ -1084,5 +1084,80 @@ const TEACHERS_DATABASE = [
     "role": "The Steadfast Leader",
     "cardImg": "cards/yogesh_sir_manager.jpeg",
     "quote": "A great manager builds a team. A true leader builds people and creates a legacy. Thank you for your leadership, guidance, and constant support. Your vision and dedication drive us to achieve more every day. — MPS"
+  },
+  {
+    "id": "bharti_maam_motherteacher",
+    "name": "Bharti Ma'am",
+    "aliases": [
+      "bharti",
+      "bharti maam",
+      "bharti mam",
+      "bharti ma'am",
+      "bharti mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/bharti_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "nikita_maam_motherteacher_2",
+    "name": "Nikita Ma'am",
+    "aliases": [
+      "nikita",
+      "nikita maam",
+      "nikita mam",
+      "nikita ma'am",
+      "nikita mother teacher 2"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/nikita_maam_motherteacher (2).jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "prerna_maam_art",
+    "name": "Prerna Ma'am",
+    "aliases": [
+      "prerna",
+      "prerna maam",
+      "prerna mam",
+      "prerna ma'am",
+      "prerna art"
+    ],
+    "subject": "Art",
+    "role": "The Creative Spark",
+    "cardImg": "cards/prerna_maam_art.jpeg",
+    "quote": "For teaching us to see the world through colours, creativity, and imagination. Your art inspires our hearts. — MPS FAMILY"
+  },
+  {
+    "id": "shipra_maam_coordinator_2",
+    "name": "Shipra Ma'am",
+    "aliases": [
+      "shipra",
+      "shipra maam",
+      "shipra mam",
+      "shipra ma'am",
+      "shipra coordinator 2"
+    ],
+    "subject": "Coordinator",
+    "role": "Coordinator",
+    "cardImg": "cards/shipra_maam_coordinator (2).jpeg",
+    "quote": "Thank you for leading with vision, guiding with wisdom, and inspiring excellence in everything you do. — MPS FAMILY"
+  },
+  {
+    "id": "vijayshree_maam_motherteacher_2",
+    "name": "Vijayshree Ma'am",
+    "aliases": [
+      "vijayshree",
+      "vijayshree maam",
+      "vijayshree mam",
+      "vijayshree ma'am",
+      "vijayshree mother teacher 2"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/vijayshree_maam_motherteacher (2).jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
   }
 ];
