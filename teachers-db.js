@@ -418,20 +418,21 @@ const TEACHERS_DATABASE = [
     "quote": "Thank you for coding our dreams, debugging our challenges, and paving the way for the future. — MPS FAMILY"
   },
   {
-    "id": "bhavna_maam",
-    "name": "Bhavna Ma'am",
+    "id": "bhawana_maam",
+    "name": "Bhawana Ma'am",
     "aliases": [
+      "bhawana",
+      "bhawana maam",
+      "bhawana mam",
+      "bhawana ma'am",
+      "bhawana sir",
+      "bhawana coordinator",
       "bhavna",
-      "bhavna maam",
-      "bhavna mam",
-      "bhavna maam",
-      "bhavna ma'am",
-      "bhavna sir",
-      "bhavna coordinator"
+      "bhavna maam"
     ],
     "subject": "Coordinator",
     "role": "Coordinator",
-    "cardImg": "cards/bhavna_maam_coordinator.jpeg",
+    "cardImg": "cards/bhawana_maam_coordinator.jpeg",
     "quote": "Thank you for leading with vision, guiding with wisdom, and inspiring excellence in everything you do. — MPS FAMILY"
   },
   {
@@ -451,20 +452,21 @@ const TEACHERS_DATABASE = [
     "quote": "For turning confusion into clarity, problems into solutions, and numbers into confidence. — MPS"
   },
   {
-    "id": "bhavna_maam",
-    "name": "Bhavna Ma'am",
+    "id": "bhawana_maam_maths",
+    "name": "Bhawana Ma'am",
     "aliases": [
+      "bhawana",
+      "bhawana maam",
+      "bhawana mam",
+      "bhawana ma'am",
+      "bhawana sir",
+      "bhawana math",
       "bhavna",
-      "bhavna maam",
-      "bhavna mam",
-      "bhavna maam",
-      "bhavna ma'am",
-      "bhavna sir",
-      "bhavna math"
+      "bhavna maam"
     ],
     "subject": "Maths",
     "role": "The Maths Mentor",
-    "cardImg": "cards/bhavna_maam_maths.jpeg",
+    "cardImg": "cards/bhawana_maam_maths.jpeg",
     "quote": "For turning confusion into clarity, problems into solutions, and numbers into confidence. — MPS"
   },
   {
@@ -569,20 +571,21 @@ const TEACHERS_DATABASE = [
     "quote": "For teaching us the beauty of life, the balance of nature, and our role in the world. — MPS FAMILY"
   },
   {
-    "id": "kavita_maam",
-    "name": "Kavita Ma'am",
+    "id": "nikita_maam",
+    "name": "Nikita Ma'am",
     "aliases": [
+      "nikita",
+      "nikita maam",
+      "nikita mam",
+      "nikita ma'am",
+      "nikita sir",
+      "nikita english",
       "kavita",
-      "kavita maam",
-      "kavita mam",
-      "kavita maam",
-      "kavita ma'am",
-      "kavita sir",
-      "kavita english"
+      "kavita maam"
     ],
     "subject": "English",
     "role": "The Wordsmith",
-    "cardImg": "cards/kavita_maam_english.jpeg",
+    "cardImg": "cards/nikita_maam_english.jpeg",
     "quote": "For turning words into ideas, lessons into stories, and every classroom conversation into a chance to find our voice. — MPS"
   },
   {
@@ -807,17 +810,19 @@ const TEACHERS_DATABASE = [
     "quote": "For greeting every question with patience, every person with kindness, and coordinating our daily connections. — MPS FAMILY"
   },
   {
-    "id": "kavita_maam_motherteacher",
-    "name": "Kavita Ma'am",
+    "id": "nikita_maam_motherteacher",
+    "name": "Nikita Ma'am",
     "aliases": [
-      "kavita mother teacher",
-      "kavita maam mother teacher",
-      "kavita mam mother teacher",
-      "kavita primary"
+      "nikita mother teacher",
+      "nikita maam mother teacher",
+      "nikita mam mother teacher",
+      "nikita primary",
+      "kavita",
+      "kavita mother teacher"
     ],
     "subject": "Mother Teacher",
     "role": "The Mother Teacher",
-    "cardImg": "cards/kavita_maam_motherteacher.jpeg",
+    "cardImg": "cards/nikita_maam_motherteacher.jpeg",
     "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
   },
   {
