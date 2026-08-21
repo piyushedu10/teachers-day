@@ -435,20 +435,19 @@ const TEACHERS_DATABASE = [
     "quote": "Thank you for leading with vision, guiding with wisdom, and inspiring excellence in everything you do. — MPS FAMILY"
   },
   {
-    "id": "bhavna_maam",
-    "name": "Bhavna Ma'am",
+    "id": "shipra_maam",
+    "name": "Shipra Ma'am",
     "aliases": [
-      "bhavna",
-      "bhavna maam",
-      "bhavna mam",
-      "bhavna maam",
-      "bhavna ma'am",
-      "bhavna sir",
-      "bhavna math"
+      "shipra",
+      "shipra maam",
+      "shipra mam",
+      "shipra ma'am",
+      "shipra sir",
+      "shipra math"
     ],
     "subject": "Maths",
     "role": "The Maths Mentor",
-    "cardImg": "cards/bhavna_maam_maths (2).jpeg",
+    "cardImg": "cards/shipra_maam_maths.jpeg",
     "quote": "For turning confusion into clarity, problems into solutions, and numbers into confidence. — MPS"
   },
   {
