@@ -418,25 +418,7 @@ const TEACHERS_DATABASE = [
     "quote": "Thank you for coding our dreams, debugging our challenges, and paving the way for the future. — MPS FAMILY"
   },
   {
-    "id": "bhawana_maam",
-    "name": "Bhawana Ma'am",
-    "aliases": [
-      "bhawana",
-      "bhawana maam",
-      "bhawana mam",
-      "bhawana ma'am",
-      "bhawana sir",
-      "bhawana coordinator",
-      "bhavna",
-      "bhavna maam"
-    ],
-    "subject": "Coordinator",
-    "role": "Coordinator",
-    "cardImg": "cards/bhawana_maam_coordinator.jpeg",
-    "quote": "Thank you for leading with vision, guiding with wisdom, and inspiring excellence in everything you do. — MPS FAMILY"
-  },
-  {
-    "id": "shipra_maam",
+    "id": "shipra_maam_coordinator",
     "name": "Shipra Ma'am",
     "aliases": [
       "shipra",
@@ -444,11 +426,29 @@ const TEACHERS_DATABASE = [
       "shipra mam",
       "shipra ma'am",
       "shipra sir",
-      "shipra math"
+      "shipra coordinator"
+    ],
+    "subject": "Coordinator",
+    "role": "Coordinator",
+    "cardImg": "cards/shipra_maam_coordinator.jpeg",
+    "quote": "Thank you for leading with vision, guiding with wisdom, and inspiring excellence in everything you do. — MPS FAMILY"
+  },
+  {
+    "id": "bhawana_maam_maths_2",
+    "name": "Bhawana Ma'am",
+    "aliases": [
+      "bhawana",
+      "bhawana maam",
+      "bhawana mam",
+      "bhawana ma'am",
+      "bhawana sir",
+      "bhawana math",
+      "bhavna",
+      "bhavna maam"
     ],
     "subject": "Maths",
     "role": "The Maths Mentor",
-    "cardImg": "cards/shipra_maam_maths.jpeg",
+    "cardImg": "cards/bhawana_maam_maths_2.jpeg",
     "quote": "For turning confusion into clarity, problems into solutions, and numbers into confidence. — MPS"
   },
   {
