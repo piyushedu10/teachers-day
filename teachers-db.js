@@ -554,21 +554,20 @@ const TEACHERS_DATABASE = [
     "quote": "Thank you for debugging our doubts, upgrading our skills, and programming a brighter future for us. — MPS FAMILY"
   },
   {
-    "id": "jayshree_maam",
-    "name": "Jayshree Ma'am",
+    "id": "jaishree_maam",
+    "name": "Jaishree Ma'am",
     "aliases": [
-      "jayshree",
-      "jayshree maam",
-      "jayshree mam",
-      "jayshree maam",
-      "jayshree ma'am",
-      "jayshree sir",
-      "jayshree evs"
+      "jaishree",
+      "jaishree maam",
+      "jaishree mam",
+      "jaishree ma'am",
+      "jaishree sir",
+      "jaishree evs"
     ],
     "subject": "Evs",
     "role": "Nurturing minds, protecting nature.",
-    "cardImg": "cards/jayshree_maam_evs.jpeg",
-    "quote": "For teaching us the beauty of life, the balance of nature, and our responsibility to the earth. — MPS FAMILY"
+    "cardImg": "cards/jaishree_maam_evs.jpeg",
+    "quote": "For teaching us the beauty of life, the balance of nature, and our role in the world. — MPS FAMILY"
   },
   {
     "id": "kavita_maam",
