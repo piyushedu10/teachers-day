@@ -1097,5 +1097,35 @@ const TEACHERS_DATABASE = [
     "role": "The Mother Teacher",
     "cardImg": "cards/vijayshree_maam_motherteacher (2).jpeg",
     "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "anju_maam_motherteacher",
+    "name": "Anju Ma'am",
+    "aliases": [
+      "anju",
+      "anju maam",
+      "anju mam",
+      "anju ma'am",
+      "anju mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/anju_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
+  },
+  {
+    "id": "shivangi_maam_motherteacher",
+    "name": "Shivangi Ma'am",
+    "aliases": [
+      "shivangi",
+      "shivangi maam",
+      "shivangi mam",
+      "shivangi ma'am",
+      "shivangi mother teacher"
+    ],
+    "subject": "Mother Teacher",
+    "role": "The Mother Teacher",
+    "cardImg": "cards/shivangi_maam_motherteacher.jpeg",
+    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
   }
 ];
