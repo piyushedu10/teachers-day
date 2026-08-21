@@ -418,22 +418,6 @@ const TEACHERS_DATABASE = [
     "quote": "Thank you for coding our dreams, debugging our challenges, and paving the way for the future. — MPS FAMILY"
   },
   {
-    "id": "shipra_maam_coordinator",
-    "name": "Shipra Ma'am",
-    "aliases": [
-      "shipra",
-      "shipra maam",
-      "shipra mam",
-      "shipra ma'am",
-      "shipra sir",
-      "shipra coordinator"
-    ],
-    "subject": "Coordinator",
-    "role": "Coordinator",
-    "cardImg": "cards/shipra_maam_coordinator.jpeg",
-    "quote": "Thank you for leading with vision, guiding with wisdom, and inspiring excellence in everything you do. — MPS FAMILY"
-  },
-  {
     "id": "bhawana_maam_maths_2",
     "name": "Bhawana Ma'am",
     "aliases": [
@@ -764,21 +748,6 @@ const TEACHERS_DATABASE = [
     "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
   },
   {
-    "id": "prerna_maam",
-    "name": "Prerna Ma'am",
-    "aliases": [
-      "prerna",
-      "prerna maam",
-      "prerna mam",
-      "prerna ma'am",
-      "prerna mother teacher"
-    ],
-    "subject": "Mother Teacher",
-    "role": "The Mother Teacher",
-    "cardImg": "cards/prerna_maam_motherteacher.jpeg",
-    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
-  },
-  {
     "id": "anita_maam",
     "name": "Anita Ma'am",
     "aliases": [
@@ -808,22 +777,6 @@ const TEACHERS_DATABASE = [
     "role": "The Welcoming Smile",
     "cardImg": "cards/devika_maam_receptionist.jpeg",
     "quote": "For greeting every question with patience, every person with kindness, and coordinating our daily connections. — MPS FAMILY"
-  },
-  {
-    "id": "nikita_maam_motherteacher",
-    "name": "Nikita Ma'am",
-    "aliases": [
-      "nikita mother teacher",
-      "nikita maam mother teacher",
-      "nikita mam mother teacher",
-      "nikita primary",
-      "kavita",
-      "kavita mother teacher"
-    ],
-    "subject": "Mother Teacher",
-    "role": "The Mother Teacher",
-    "cardImg": "cards/nikita_maam_motherteacher.jpeg",
-    "quote": "For nurturing our early steps, guiding us with warmth, and creating a second home in the classroom. — MPS FAMILY"
   },
   {
     "id": "manju_maam",
@@ -1006,21 +959,6 @@ const TEACHERS_DATABASE = [
     "subject": "Mother Teacher",
     "role": "The Mother Teacher",
     "cardImg": "cards/radhika_maam_motherteacher.jpeg",
-    "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
-  },
-  {
-    "id": "vijayshree_maam_motherteacher",
-    "name": "Vijayshree Ma'am",
-    "aliases": [
-      "vijayshree",
-      "vijayshree maam",
-      "vijayshree mam",
-      "vijayshree ma'am",
-      "vijayshree mother teacher"
-    ],
-    "subject": "Mother Teacher",
-    "role": "The Mother Teacher",
-    "cardImg": "cards/vijayshree_maam_motherteacher.jpeg",
     "quote": "For nurturing our earliest memories with warmth, patience, and endless love. Happy Teacher's Day! — MPS FAMILY"
   },
   {
